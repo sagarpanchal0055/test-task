@@ -11,6 +11,7 @@ import EditProject from "../features/dashboard/EditProject";
 import Estimates from "../features/dashboard/Estimates";
 import AddEstimate from "../features/dashboard/AddEstimate";
 import EditEstimate from "../features/dashboard/EditEstimate";
+import ForgotPassword from "../features/auth/ForgotPassword";
 
 const AppRoutes = () => {
 	const { isAuthenticated } = useSelector(state => state.auth);
@@ -26,6 +27,11 @@ const AppRoutes = () => {
 			<Route
 				path="/sign-up"
 				element={(isAuthenticated || userInfo?.isAuthenticated) ? <Navigate to={"/dashboard"} /> : <SignUp />}
+			/>
+
+			<Route
+				path="/forgot-password"
+				element={(isAuthenticated || userInfo?.isAuthenticated) ? <Navigate to={"/dashboard"} /> : <ForgotPassword />}
 			/>
 
 			<Route

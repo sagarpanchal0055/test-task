@@ -47,10 +47,13 @@ const forgotPassword = async (email, newPassword) => {
 
     if (response.data.length > 0) {
       const userId = response.data[0].id;
-      await axios.patch(`http://localhost:5000/users/${userId}`, {
+      const resp = await axios.patch(`${import.meta.env.VITE_API_BASE_URL}users/${userId}`, {
         password: newPassword
       });
+      console.log("resp ", resp);
       console.log('Password updated successfully!');
+
+      return resp
     } else {
       console.error('Email not found!');
     }

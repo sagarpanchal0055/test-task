@@ -189,12 +189,12 @@ const SignUp = () => {
             {loader ? "Logging in.." : "Login"}
           </Button>
           <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-            Don’t have an account?   <Button
+            Already have an account?   <Button
             component={ReactRouterLink}
-            to="/sign-up"
+            to="/login"
             sx={{ textAlign: "right", textTransform: "capitalize", color: "#5A8CFF", fontSize: 14 }}
           >
-            Create Account
+            Login
           </Button>
           </Box>
         </form>
