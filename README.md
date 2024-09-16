@@ -18,7 +18,7 @@ Make sure you have the following installed on your machine:
 
 ### 1. Clone the repository
 
-git clone https://github.com/your-username/your-project.git
+git clone https://github.com/sagarpanchal0055/test-task.git
 cd your-project
 
 
