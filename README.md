@@ -1,5 +1,3 @@
-markdown
-Copy code
 # Project Name
 
 ## Description
