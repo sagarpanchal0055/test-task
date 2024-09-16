@@ -10,7 +10,7 @@ import LightIcon from "./../assets/LightIcon.png";
 import LanguageSelect from './LanguageSelect';
 import { useSelector } from 'react-redux';
 
-const Header = () => {
+const Header = ({ setShow }) => {
   const { darkMode, toggleTheme } = useThemeContext();
   const auth = useSelector((state) => state.auth);  
 
@@ -18,7 +18,7 @@ const Header = () => {
     <AppBar position="static" color="default" elevation={0}>
       <Toolbar sx={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <IconButton>
+          <IconButton onClick={() => setShow(prev => !prev)}>
             <MenuIcon />
           </IconButton>
           <Box sx={{ width: "388px", borderRadius: "20px" }} border={"1px solid #D5D5D5"}>
