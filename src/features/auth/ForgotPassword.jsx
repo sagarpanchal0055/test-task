@@ -6,29 +6,22 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/auth/authSlice";
 import shapeImage from './../../assets/Shape.png';
-import { forgotPassword, loginApi } from "../../utils/apis/auth";
+import { forgotPassword } from "../../utils/apis/auth";
 import { t } from "i18next";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
-  const [rememberPassword, setRememberPassword] = useState(false);
-
-  const handleChange = (event) => {
-    setRememberPassword(event.target.checked);
-  };
 
   const validate = () => {
     const newErrors = {};
 
     if (!email || !password) {
-      if (!email) newErrors.email = "Please enter Email ID";
-      if (!password) newErrors.password = "Please enter your Password";
+      if (!email) newErrors.email = t("Please enter Email ID");
+      if (!password) newErrors.password = t("Please enter your Password");
     } else {
       newErrors.email = "";
       newErrors.password = "";
@@ -59,10 +52,10 @@ const ForgotPassword = () => {
     console.log("response after", response);
     
     if (response?.data?.id) {
-      toast.success("Password updated successfully");
+      toast.success(t("Password updated successfully"));
       navigate("/login");
     } else {
-      toast.error("Email ID/Password incorrect!");
+      toast.error(t("Something went wrong!!"));
     }
 
     setLoader(false);
@@ -98,17 +91,17 @@ const ForgotPassword = () => {
       >
         <Box mb={5} textAlign={"center"}>
           <Typography fontSize={"32px"} fontWeight={700}>
-            {"Forget Password"}
+            {t("Forget Password")}
           </Typography>
           <Typography fontSize={14} fontWeight={400} color={"#393939"}>
-            Please enter your email and password to Change Password
+            {t("Please enter your email and password to Change Password")}
           </Typography>
         </Box>
 
         <form style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }} onSubmit={onHandleSubmit}>
           <Box mb={4}>
             <FormControl fullWidth error={Boolean(errors.email)} margin="normal">
-              <FormLabel style={{ fontWeight: 600 }}>Email Address:</FormLabel>
+              <FormLabel style={{ fontWeight: 600 }}>{t("Email Address:")}</FormLabel>
               <TextField
                 type="email"
                 variant="outlined"
@@ -123,10 +116,10 @@ const ForgotPassword = () => {
 
             <FormControl fullWidth error={Boolean(errors.password)} margin="normal">
               <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
-                <FormLabel style={{ fontWeight: 600 }}>Password</FormLabel>
+                <FormLabel style={{ fontWeight: 600 }}>{t("Password")}</FormLabel>
               </Box>
               <TextField
-                type={showPassword ? "text" : "password"}
+                type={"password"}
                 variant="outlined"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -145,15 +138,15 @@ const ForgotPassword = () => {
             disabled={loader}
             startIcon={loader ? <CircularProgress size={24} /> : null}
           >
-            {loader ? "Updating.." : "Update Password"}
+            {loader ? t("Updating..") : t("Update Password")}
           </Button>
           <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-            Don’t have an account?   <Button
+            {t("Don’t have an account?")} <Button
             component={ReactRouterLink}
             to="/sign-up"
             sx={{ textAlign: "right", textTransform: "capitalize", color: "#5A8CFF", fontSize: 14 }}
           >
-            Create Account
+            {t("Create Account")}
           </Button>
           </Box>
         </form>

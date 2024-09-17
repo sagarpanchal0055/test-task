@@ -7,8 +7,10 @@ import { addEstimate } from "../../utils/apis/estimate";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 const EstimateTableForm = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const [sections, setSections] = useState([
@@ -124,7 +126,7 @@ const EstimateTableForm = () => {
       sections: sections
     }
     const response = await addEstimate(payload);
-    toast.success("Estimate created successfully");
+    toast.success(t('estimate_created_successfully'));
     navigate("/estimates") 
   }
 
@@ -149,12 +151,12 @@ const EstimateTableForm = () => {
                 padding: "0 20px",
               }}
             >
-              <div>ITEM</div>
-              <div>DESCRIPTION</div>
-              <div>UNIT</div>
-              <div>QUANTITY</div>
-              <div>PRICE ($)</div>
-              <div>MARGIN (+/-)</div>
+              <div>{t("ITEM")}</div>
+              <div>{t("DESCRIPTION")}</div>
+              <div>{t("UNIT")}</div>
+              <div>{t("QUANTITY")}</div>
+              <div>{t("PRICE")} ($)</div>
+              <div>{t("MARGIN")} (+/-)</div>
             </div>
           </div>
           <div style={{ padding: "0 20px" }}>
@@ -208,7 +210,7 @@ const EstimateTableForm = () => {
                       <input
                         type="text"
                         value={section.sectionName}
-                        placeholder="Section Name"
+                        placeholder={t("SECTION_NAME")}
                         className="section-name-input"
                         onChange={(e) =>
                           setSections((prevSections) => {
@@ -259,7 +261,7 @@ const EstimateTableForm = () => {
                           <input
                             type="text"
                             value={item.itemName}
-                            placeholder="Item Name"
+                            placeholder={t("ITEM_NAME")}
                             className="input-field"
                             onChange={(e) =>
                               handleInputChange(sectionIndex, itemIndex, "itemName", e.target.value)
@@ -270,7 +272,7 @@ const EstimateTableForm = () => {
                           <input
                             type="text"
                             value={item.description}
-                            placeholder="Item Description"
+                            placeholder={t("ITEM_DESCRIPTION")}
                             className="input-field"
                             onChange={(e) =>
                               handleInputChange(sectionIndex, itemIndex, "description", e.target.value)
@@ -281,7 +283,7 @@ const EstimateTableForm = () => {
                           <input
                             type="text"
                             value={item.unit}
-                            placeholder="Unit"
+                            placeholder={t("UNIT")}
                             className="input-field"
                             onChange={(e) =>
                               handleInputChange(sectionIndex, itemIndex, "unit", e.target.value)
@@ -292,7 +294,7 @@ const EstimateTableForm = () => {
                           <input
                             type="number"
                             value={item.quantity}
-                            placeholder="Quantity"
+                            placeholder={t("QUANTITY")}
                             className="input-field"
                             onChange={(e) =>
                               handleInputChange(sectionIndex, itemIndex, "quantity", e.target.value)
@@ -303,7 +305,7 @@ const EstimateTableForm = () => {
                           <input
                             type="number"
                             value={item.price}
-                            placeholder="Price"
+                            placeholder={t("PRICE")}
                             className="input-field"
                             onChange={(e) =>
                               handleInputChange(sectionIndex, itemIndex, "price", e.target.value)
@@ -314,7 +316,7 @@ const EstimateTableForm = () => {
                           <input
                             type="number"
                             value={item.margin}
-                            placeholder="Margin"
+                            placeholder={t("MARGIN")}
                             className="input-field"
                             onChange={(e) =>
                               handleInputChange(sectionIndex, itemIndex, "margin", e.target.value)
@@ -325,7 +327,7 @@ const EstimateTableForm = () => {
                           <input
                             type="number"
                             value={totalPrice}
-                            placeholder="total"
+                            placeholder={t("TOTAL")}
                             className="input-field"
                             readOnly
                           />
@@ -375,7 +377,7 @@ const EstimateTableForm = () => {
                 borderTop: "1px solid lightgray",
               }}
             >
-              <p>Sub Total:</p>
+              <p>{t("SUB_TOTAL")}:</p>
               <p>$ {subTotal}</p>
             </div>
             <div
@@ -387,7 +389,7 @@ const EstimateTableForm = () => {
                 borderTop: "1px solid lightgray",
               }}
             >
-              <p>Total Margin:</p>
+              <p>{t("TOTAL_MARGIN")}:</p>
               <p>$ {totalMargin}</p>
             </div>
             <div
@@ -399,7 +401,7 @@ const EstimateTableForm = () => {
                 borderTop: "1px solid lightgray",
               }}
             >
-              <p>Total Amount:</p>
+              <p>{t("TOTAL_AMOUNT")}:</p>
               <p>$ {totalAmount}</p>
             </div>
           </div>
@@ -419,7 +421,7 @@ const EstimateTableForm = () => {
             sx={{ marginRight: "32px", width: 200, height: 50 }}
             onClick={() => navigate("/estimates")}
           >
-            Cancel
+            {t("CANCEL")}
           </Button>
           <Button
             size="large"
@@ -428,7 +430,7 @@ const EstimateTableForm = () => {
             sx={{ width: 200, height: 50 }}
             onClick={submitHandler}
           >
-            Submit
+            {t("SUBMIT")}
           </Button>
         </Box>
       </Paper>

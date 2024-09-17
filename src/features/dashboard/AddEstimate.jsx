@@ -1,13 +1,16 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import EditProjectForm from "../../components/projects/EditProjectForm";
 import EstimateTableForm from "../../components/estimates/EstimateTableForm";
+import { useTranslation } from 'react-i18next';
 
 function AddEstimate() {
-  
+  const { t } = useTranslation();
+
   return (
     <Box p={"24px"}>
-      <Typography fontSize={"32px"} fontWeight={700} color="#202224">Add New Estimate</Typography>
+      <Typography fontSize={"32px"} fontWeight={700} color="#202224">
+        {t('ADD_NEW_ESTIMATE')}
+      </Typography>
       
       <EstimateTableForm />
     </Box>

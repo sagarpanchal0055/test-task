@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Table,
   TableBody,
@@ -7,17 +7,15 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Checkbox,
-  Box,
-  FormControlLabel,
-  Avatar,
+  Box
 } from "@mui/material";
-import { Edit, Save, TimelapseRounded } from "@mui/icons-material";
-import { deepOrange, deepPurple } from "@mui/material/colors";
-import { useNavigate } from "react-router-dom";
+import { Edit } from "@mui/icons-material";
 import StatusBar from "../StatusBar";
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from "react-router-dom";
 
 const EstimatesTable = ({ estimatesData = [] }) => {
+  const { t } = useTranslation(); // Use translation hook
   const navigate = useNavigate();
 
   return (
@@ -36,7 +34,7 @@ const EstimatesTable = ({ estimatesData = [] }) => {
                   width: "auto",
                 }}
               >
-                VERSION
+                {t('VERSION')}
               </TableCell>
 
               <TableCell
@@ -49,7 +47,7 @@ const EstimatesTable = ({ estimatesData = [] }) => {
                   width: "auto",
                 }}
               >
-                PROJECT
+                {t('PROJECT')}
               </TableCell>
 
               <TableCell
@@ -62,7 +60,7 @@ const EstimatesTable = ({ estimatesData = [] }) => {
                   width: "auto",
                 }}
               >
-                CLIENT
+                {t('CLIENT')}
               </TableCell>
 
               <TableCell
@@ -75,7 +73,7 @@ const EstimatesTable = ({ estimatesData = [] }) => {
                   width: "auto",
                 }}
               >
-                CREATED DATE
+                {t('CREATED_DATE')}
               </TableCell>
 
               <TableCell
@@ -88,21 +86,7 @@ const EstimatesTable = ({ estimatesData = [] }) => {
                   width: "auto",
                 }}
               >
-                LAST MODIFIED
-              </TableCell>
-
-              <TableCell
-                sx={{
-                  border: "none",
-                  fontSize: "14px",
-                  fontWeight: "800",
-                  padding: "0 16px",
-                  whiteSpace: "nowrap",
-                  width: "auto",
-                }}
-                align="center"
-              >
-                Status
+                {t('LAST_MODIFIED')}
               </TableCell>
 
               <TableCell
@@ -116,7 +100,21 @@ const EstimatesTable = ({ estimatesData = [] }) => {
                 }}
                 align="center"
               >
-                Action
+                {t('STATUS')}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  border: "none",
+                  fontSize: "14px",
+                  fontWeight: "800",
+                  padding: "0 16px",
+                  whiteSpace: "nowrap",
+                  width: "auto",
+                }}
+                align="center"
+              >
+                {t('ACTION')}
               </TableCell>
             </TableRow>
           </TableHead>

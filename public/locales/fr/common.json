@@ -1,34 +1,217 @@
 {
-  "welcome": "Bienvenue sur notre site web!",
-  "description": "Ceci est une application multilingue",
-  "Login to Account": "Se connecter au compte",
+  "Login to Account": "Connexion au compte",
   "Please enter your email and password to continue": "Veuillez entrer votre email et mot de passe pour continuer",
-  "Email Address": "Adresse e-mail",
+  "Email Address:": "Adresse e-mail:",
   "Password": "Mot de passe",
-  "Forget Password": "Mot de passe oublié ?",
+  "Forget Password?": "Mot de passe oublié?",
   "Remember Password": "Se souvenir du mot de passe",
+  "Logging in..": "Connexion en cours..",
   "Login": "Connexion",
-  "Don’t have an account": "Vous n'avez pas de compte ?",
+  "Don’t have an account?": "Vous n'avez pas de compte?",
   "Create Account": "Créer un compte",
+  "Please enter Email ID": "Veuillez entrer l'adresse e-mail",
+  "Please enter your Password": "Veuillez entrer votre mot de passe",
+  "Email ID/Password incorrect!": "Identifiant/Mot de passe incorrect!",
+
+  
+  "Create an Account": "Créer un compte",
+  "Create an account to continue": "Créer un compte pour continuer",
+  "Please enter a valid email": "Veuillez entrer un email valide",
+  "Please enter username": "Veuillez entrer un nom d'utilisateur",
+  "Username": "Nom d'utilisateur",
+  "Signing up..": "Inscription en cours..",
+  "Sign Up": "S'inscrire",
+  "Already have an account?": "Vous avez déjà un compte ?",
+  "User created successfully": "Utilisateur créé avec succès",
+  "Something went wrong!": "Quelque chose s'est mal passé !",
+
+
+  "Forget Password": "Mot de passe oublié",
+  "Please enter your email and password to Change Password": "Veuillez entrer votre e-mail et votre mot de passe pour changer le mot de passe",
+  "Updating..": "Mise à jour en cours..",
+  "Update Password": "Mettre à jour le mot de passe",
+  "Password updated successfully": "Mot de passe mis à jour avec succès",
+
 
   "Dashboard": "Tableau de bord",
   "Projects": "Projets",
   "Estimates": "Estimations",
-  "Logout": "Se déconnecter",
+  "Logout": "Déconnexion",
+
+  "Search": "Rechercher…",
+
+
+  "Total User": "Utilisateur total",
+  "Total Order": "Commande totale",
+  "Total Sales": "Ventes totales",
+  "Total Pending": "En attente totale",
+  "Up from yesterday": "En hausse par rapport à hier",
+  "Up from past week": "En hausse par rapport à la semaine dernière",
+  "Down from yesterday": "En baisse par rapport à hier",
+
+
+  "Sales": "Ventes",
+  "Sales Details": "Détails des ventes",
+
+
+  "Product Name": "Nom du Produit",
+  "Location": "Emplacement",
+  "Date - Time": "Date - Heure",
+  "Piece": "Pièce",
+  "Amount": "Montant",
+  "Status": "Statut",
+
+
+  "Customer": "Client",
+  "Reference Number": "Numéro de Référence",
+  "Due Date": "Date d'Échéance",
+  "Contact": "Contact",
+  "Comments": "Commentaires",
+  "Area Location": "Zone de Localisation",
+  "Completed": "Complété",
+  "Processing": "En Traitement",
+  "Rejected": "Rejeté",
+  "On Hold": "En Attente",
+  "In Transit": "En Transit",
+
 
   "Filter By": "Filtrer par",
   "Date": "Date",
+  "*You can choose multiple date": "*Vous pouvez choisir plusieurs dates",
+  "Apply Now": "Appliquer maintenant",
   "Hide Columns": "Masquer les colonnes",
-  "Status": "Statut",
+  "Select Columns": "Sélectionner les colonnes",
+  "*You can choose multiple Columns to hide": "*Vous pouvez choisir plusieurs colonnes à masquer",
+  "Select Status": "Sélectionner le statut",
+  "*You can choose multiple status": "*Vous pouvez choisir plusieurs statuts",
   "Reset Filter": "Réinitialiser le filtre",
   "Add Project": "Ajouter un projet",
-  "*You can choose multiple date": "*Vous pouvez choisir plusieurs dates",
-  "*You can choose multiple Columns to hide": "*Vous pouvez choisir plusieurs colonnes à masquer",
-  "*You can choose multiple status": "*Vous pouvez choisir plusieurs colonnes à masquer",
-  "Apply Now": "Appliquer maintenant",
-  "Select Columns": "Sélectionner des colonnes",
-  "Select Status": "Sélectionner un statut",
-  "Add New Project": "Ajouter un nouveau projet",
-  "Add Now": "Ajouter maintenant",
-  "Cancel": "Annuler"
+
+
+  "Ref Number": "Numéro de Réf",
+  "Project Reference": "Référence du Projet",
+  "Project Name": "Nom du Projet",
+  "Project Number": "Numéro du Projet",
+  "Project Location": "Emplacement du Projet",
+  "Address": "Adresse",
+  "Assigned To": "Attribué À",
+  "Manager": "Responsable",
+  "Staff": "Personnel",
+  "Action": "Action",
+  "Edit": "Modifier",
+  "Save": "Sauvegarder",
+  "Time Log": "Journal du Temps",
+  "+1": "+1",
+
+
+  "Add New Project": "Ajouter un Nouveau Projet",
+  "Email": "E-mail",
+  "Select Customer": "Sélectionner un Client",
+  "Select Date": "Sélectionner une Date",
+  "Add Now": "Ajouter Maintenant",
+  "Cancel": "Annuler",
+  "Customer is required": "Le Client est requis",
+  "Reference Number is required": "Le Numéro de Référence est requis",
+  "Project Name is required": "Le Nom du Projet est requis",
+  "Project Number is required": "Le Numéro du Projet est requis",
+  "Area Location is required": "La Zone de Localisation est requise",
+  "Address is required": "L'Adresse est requise",
+  "Due Date is required": "La Date d'Échéance est requise",
+  "Contact is required": "Le Contact est requis",
+  "Manager is required": "Le Responsable est requis",
+  "Staff is required": "Le Personnel est requis",
+  "Status is required": "Le Statut est requis",
+  "Email is required": "L'E-mail est requis",
+  "Invalid email address": "Adresse e-mail invalide",
+  "On-Hold": "En Attente",
+  "In-Transit": "En Transit",
+
+
+  "editProject": "Modifier le projet",
+  "fetchError": "Échec de la récupération des détails du projet. Veuillez réessayer.",
+  "Record updated successfully": "Enregistrement mis à jour avec succès",
+  "Error updating record": "Erreur lors de la mise à jour de l'enregistrement",
+
+
+  "Add Estimate": "Ajouter une estimation",
+  "Rows per page": "Lignes par page",
+  "Showing {{from}} to {{to}} of {{count}}": "Affichage de {{from}} à {{to}} sur {{count}}",
+  "VERSION": "VERSION",
+  "PROJECT": "PROJET",
+  "CLIENT": "CLIENT",
+  "CREATED_DATE": "DATE DE CRÉATION",
+  "LAST_MODIFIED": "DERNIÈRE MODIFICATION",
+  "STATUS": "Statut",
+  "ACTION": "Action",
+
+  "ADD_NEW_ESTIMATE": "Ajouter un nouvel estimé",
+  "SECTION_NAME": "Nom de la section",
+  "ITEM_NAME": "Nom de l'article",
+  "ITEM_DESCRIPTION": "Description de l'article",
+  "ITEM": "ARTICLE",
+  "DESCRIPTION": "DESCRIPTION",
+  "UNIT": "Unité",
+  "QUANTITY": "Quantité",
+  "PRICE": "Prix",
+  "MARGIN": "Marge",
+  "TOTAL": "Total",
+  "SUB_TOTAL": "Sous-total",
+  "TOTAL_MARGIN": "Marge totale",
+  "TOTAL_AMOUNT": "Montant total",
+  "CANCEL": "Annuler",
+  "SUBMIT": "Soumettre",
+  "Estimate created successfully": "Estimation créée avec succès",
+
+
+  "Edit Estimate": "Modifier l'estimation",
+  "Estimate updated successfully": "Estimation mise à jour avec succès"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

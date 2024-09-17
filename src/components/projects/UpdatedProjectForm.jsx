@@ -7,6 +7,7 @@ import CustomButton from "../Button";
 import { useNavigate } from "react-router-dom";
 import { createProject, updateProject } from "../../utils/apis/project";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";  // Import useTranslation
 
 const defaultValues = {
   customer: "",
@@ -24,6 +25,7 @@ const defaultValues = {
 };
 
 export default function UpdatedProjectForm({ currentRecord }) {
+  const { t } = useTranslation();  // Use translation hook
   const navigate = useNavigate();
   const {
     control,
@@ -39,21 +41,20 @@ export default function UpdatedProjectForm({ currentRecord }) {
     if (currentRecord) {
       const [day, month, year] = currentRecord?.dueDate.split('/');
       const formattedDate = new Date(`${year}-${month}-${day}`);
-      setValue("customer", currentRecord.customer)
-      setValue("referenceNumber", currentRecord.refNumber)
-      setValue("projectName", currentRecord.projectName)
-      setValue("projectNumber", currentRecord.projectNumber)
-      setValue("areaLocation", currentRecord.areaLocation)
-      setValue("address", currentRecord.address)
-      setValue("dueDate", formattedDate)
-      setValue("contact", currentRecord.contact)
-      setValue("manager", currentRecord.manager)
-      setValue("staff", currentRecord.staff)
-      setValue("status", currentRecord.status)
-      setValue("email", currentRecord.email)
+      setValue("customer", currentRecord.customer);
+      setValue("referenceNumber", currentRecord.refNumber);
+      setValue("projectName", currentRecord.projectName);
+      setValue("projectNumber", currentRecord.projectNumber);
+      setValue("areaLocation", currentRecord.areaLocation);
+      setValue("address", currentRecord.address);
+      setValue("dueDate", formattedDate);
+      setValue("contact", currentRecord.contact);
+      setValue("manager", currentRecord.manager);
+      setValue("staff", currentRecord.staff);
+      setValue("status", currentRecord.status);
+      setValue("email", currentRecord.email);
     }
-  }, [currentRecord]);
-  
+  }, [currentRecord, setValue]);
 
   const onSubmit = async (data) => {
     let payload = {
@@ -68,12 +69,12 @@ export default function UpdatedProjectForm({ currentRecord }) {
       manager: data.manager,
       staff: data.staff,
       status: data.status,
-      email: data.email
+      email: data.email,
     };
     
     const response = await updateProject(currentRecord.id, payload);
-    toast.success("Record updated successfully");
-    navigate("/projects")
+    toast.success(t("Record updated successfully"));  // Use translation for toast message
+    navigate("/projects");
   };
 
   return (
@@ -82,14 +83,14 @@ export default function UpdatedProjectForm({ currentRecord }) {
         <div className="form-grid">
           {/* Customer */}
           <div className="form-field">
-            <label>Customer</label>
+            <label>{t("Customer")}</label>
             <Controller
               name="customer"
               control={control}
-              rules={{ required: "Customer is required" }}
+              rules={{ required: t("Customer is required") }}
               render={({ field }) => (
                 <select {...field} className={errors.customer ? "input-error" : ""}>
-                  <option value="">Select Customer</option>
+                  <option value="">{t("Select Customer")}</option>
                   <option value="Ruchika Heer">Ruchika Heer</option>
                   <option value="Akil Reddy">Akil Reddy</option>
                   <option value="Aman Parvez">Aman Parvez</option>
@@ -101,17 +102,17 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Reference Number */}
           <div className="form-field">
-            <label>Reference Number</label>
+            <label>{t("Reference Number")}</label>
             <Controller
               name="referenceNumber"
               control={control}
-              rules={{ required: "Reference Number is required" }}
+              rules={{ required: t("Reference Number is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.referenceNumber ? "input-error" : ""}
-                  placeholder="Reference Number"
+                  placeholder={t("Reference Number")}
                 />
               )}
             />
@@ -122,17 +123,17 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Project Name */}
           <div className="form-field">
-            <label>Project Name</label>
+            <label>{t("Project Name")}</label>
             <Controller
               name="projectName"
               control={control}
-              rules={{ required: "Project Name is required" }}
+              rules={{ required: t("Project Name is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.projectName ? "input-error" : ""}
-                  placeholder="Project Name"
+                  placeholder={t("Project Name")}
                 />
               )}
             />
@@ -143,17 +144,17 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Project Number */}
           <div className="form-field">
-            <label>Project Number</label>
+            <label>{t("Project Number")}</label>
             <Controller
               name="projectNumber"
               control={control}
-              rules={{ required: "Project Number is required" }}
+              rules={{ required: t("Project Number is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.projectNumber ? "input-error" : ""}
-                  placeholder="Project Number"
+                  placeholder={t("Project Number")}
                 />
               )}
             />
@@ -164,17 +165,17 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Area Location */}
           <div className="form-field">
-            <label>Area Location</label>
+            <label>{t("Area Location")}</label>
             <Controller
               name="areaLocation"
               control={control}
-              rules={{ required: "Area Location is required" }}
+              rules={{ required: t("Area Location is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.areaLocation ? "input-error" : ""}
-                  placeholder="Area Location"
+                  placeholder={t("Area Location")}
                 />
               )}
             />
@@ -183,17 +184,17 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Address */}
           <div className="form-field">
-            <label>Address</label>
+            <label>{t("Address")}</label>
             <Controller
               name="address"
               control={control}
-              rules={{ required: "Address is required" }}
+              rules={{ required: t("Address is required") }}
               render={({ field }) => (
                 <textarea
                   {...field}
                   rows={2}
                   className={errors.address ? "input-error" : ""}
-                  placeholder="Address"
+                  placeholder={t("Address")}
                 />
               )}
             />
@@ -202,11 +203,11 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Due Date */}
           <div className="form-field">
-            <label>Due Date</label>
+            <label>{t("Due Date")}</label>
             <Controller
               name="dueDate"
               control={control}
-              rules={{ required: "Due Date is required" }}
+              rules={{ required: t("Due Date is required") }}
               render={({ field }) => (
                 <DatePicker
                   {...field}
@@ -214,7 +215,7 @@ export default function UpdatedProjectForm({ currentRecord }) {
                   onChange={(date) => field.onChange(date)}
                   dateFormat="dd-MM-yyyy"
                   className={errors.dueDate ? "input-error" : ""}
-                  placeholderText="Select Date"
+                  placeholderText={t("Select Date")}
                 />
               )}
             />
@@ -223,17 +224,17 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Contact */}
           <div className="form-field">
-            <label>Contact</label>
+            <label>{t("Contact")}</label>
             <Controller
               name="contact"
               control={control}
-              rules={{ required: "Contact is required" }}
+              rules={{ required: t("Contact is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.contact ? "input-error" : ""}
-                  placeholder="Contact"
+                  placeholder={t("Contact")}
                 />
               )}
             />
@@ -244,17 +245,17 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Manager */}
           <div className="form-field">
-            <label>Manager</label>
+            <label>{t("Manager")}</label>
             <Controller
               name="manager"
               control={control}
-              rules={{ required: "Manager is required" }}
+              rules={{ required: t("Manager is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.manager ? "input-error" : ""}
-                  placeholder="Manager"
+                  placeholder={t("Manager")}
                 />
               )}
             />
@@ -265,17 +266,17 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Staff */}
           <div className="form-field">
-            <label>Staff</label>
+            <label>{t("Staff")}</label>
             <Controller
               name="staff"
               control={control}
-              rules={{ required: "Staff is required" }}
+              rules={{ required: t("Staff is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.staff ? "input-error" : ""}
-                  placeholder="Staff"
+                  placeholder={t("Staff")}
                 />
               )}
             />
@@ -284,19 +285,19 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Status */}
           <div className="form-field">
-            <label>Status</label>
+            <label>{t("Status")}</label>
             <Controller
               name="status"
               control={control}
-              rules={{ required: "Status is required" }}
+              rules={{ required: t("Status is required") }}
               render={({ field }) => (
                 <select {...field} className={errors.status ? "input-error" : ""}>
-                  <option value="">Select Status</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Processing">Processing</option>
-                  <option value="Rejected">Rejected</option>
-                  <option value="On Hold">On-Hold</option>
-                  <option value="In Transit">In-Transit</option>
+                  <option value="">{t("Select Status")}</option>
+                  <option value="Completed">{t("Completed")}</option>
+                  <option value="Processing">{t("Processing")}</option>
+                  <option value="Rejected">{t("Rejected")}</option>
+                  <option value="On Hold">{t("On Hold")}</option>
+                  <option value="In Transit">{t("In Transit")}</option>
                 </select>
               )}
             />
@@ -305,17 +306,17 @@ export default function UpdatedProjectForm({ currentRecord }) {
 
           {/* Email */}
           <div className="form-field">
-            <label>Email</label>
+            <label>{t("Email")}</label>
             <Controller
               name="email"
               control={control}
-              rules={{ required: "Email is required", pattern: /^\S+@\S+$/i }}
+              rules={{ required: t("Email is required"), pattern: /^\S+@\S+$/i }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="email"
                   className={errors.email ? "input-error" : ""}
-                  placeholder="Email"
+                  placeholder={t("Email")}
                 />
               )}
             />
@@ -326,10 +327,10 @@ export default function UpdatedProjectForm({ currentRecord }) {
         {/* Buttons */}
         <div className="form-buttons">
           <CustomButton type="submit">
-            Update Now
+            {t("Update Now")}
           </CustomButton>
           <button type="button" className="cancel-btn" onClick={() => navigate("/projects")}>
-            Cancel
+            {t("Cancel")}
           </button>
         </div>
       </form>

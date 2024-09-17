@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   Box,
@@ -6,7 +6,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  IconButton,
   Typography,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
@@ -17,9 +16,11 @@ import AvTimerRoundedIcon from "@mui/icons-material/AvTimerRounded";
 import { logout } from "../../store/auth/authSlice";
 import { useTranslation } from "react-i18next";
 
-
 const Sidebar = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const location = useLocation();
+
   const menuItems = [
     { name: t("Dashboard"), path: "/dashboard", Icon: AvTimerRoundedIcon },
     { name: t("Projects"), path: "/projects", Icon: DashboardIcon },
@@ -27,13 +28,8 @@ const Sidebar = () => {
     { name: t("Logout"), path: "/login", Icon: LogoutIcon },
   ];
 
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleSubmenu = () => setIsOpen(!isOpen);
-
-  const topMenuItems = menuItems.slice(0, menuItems.length - 1);
-  const bottomMenuItems = menuItems.slice(menuItems.length - 1);
+  const topMenuItems = menuItems.slice(0, -1);
+  const bottomMenuItems = menuItems.slice(-1);
 
   return (
     <Box
@@ -48,18 +44,18 @@ const Sidebar = () => {
     >
       <Box>
         <Box sx={{ padding: 2, textAlign: "center" }}>
-          <Typography
-            justifyContent={"center"}
-            width={"100%"}
-            display={"flex"}
+          <Box
             fontSize={"20px"}
             fontWeight={800}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
           >
             LO
             <Typography fontSize={"20px"} color="#4379ee" fontWeight={800}>
               GO
             </Typography>
-          </Typography>
+          </Box>
         </Box>
         <List>
           {topMenuItems.map(({ path, name, Icon }, index) => (
@@ -68,30 +64,36 @@ const Sidebar = () => {
               to={path}
               key={index}
               sx={{
-                position: "relative"
+                position: "relative",
+                "&:hover" : {
+                  "background": "lightGrey"
+                }
               }}
             >
-              <Box 
-                width={"5px"} 
+              <Box
+                width={"5px"}
                 height={"64px"}
                 position={"absolute"}
                 left={0}
-                sx={{ 
+                sx={{
                   backgroundColor: location.pathname === path ? "#4C8BF5" : "",
-                  borderTopRightRadius: location.pathname === path ? "4px" : "", 
-                  borderBottomRightRadius: location.pathname === path ? "4px" : "", 
-                }} 
-              ></Box>
-              <Box sx={{ 
-                display: "flex", 
-                width: "180px", 
-                alignItems: "center", 
-                marginLeft: "16px", 
-                backgroundColor: location.pathname === path ? "#4C8BF5" : "",
-                borderRadius: location.pathname === path ? "4px" : "",
-                p: "16px",
-                pr: "24px" 
-              }}>
+                  borderTopRightRadius: location.pathname === path ? "4px" : "",
+                  borderBottomRightRadius:
+                    location.pathname === path ? "4px" : "",
+                }}
+              />
+              <Box
+                sx={{
+                  display: "flex",
+                  width: "180px",
+                  alignItems: "center",
+                  marginLeft: "16px",
+                  backgroundColor: location.pathname === path ? "#4C8BF5" : "",
+                  borderRadius: location.pathname === path ? "4px" : "",
+                  p: "16px",
+                  pr: "24px",
+                }}
+              >
                 <ListItemIcon>
                   <Icon
                     sx={{
@@ -120,12 +122,11 @@ const Sidebar = () => {
       <List>
         {bottomMenuItems.map(({ path, name, Icon }, index) => (
           <ListItem
-            button
             component={NavLink}
             to={path}
             key={index}
             onClick={() => {
-              if (name === "Logout") {
+              if (name === t("Logout")) {
                 dispatch(logout());
               }
             }}

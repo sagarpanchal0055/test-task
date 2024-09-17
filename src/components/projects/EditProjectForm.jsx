@@ -7,6 +7,7 @@ import CustomButton from "../Button";
 import { useNavigate } from "react-router-dom";
 import { createProject } from "../../utils/apis/project";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const defaultValues = {
   customer: "",
@@ -24,6 +25,7 @@ const defaultValues = {
 };
 
 export default function EditProjectForm() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const {
     control,
@@ -51,8 +53,8 @@ export default function EditProjectForm() {
     };
     
     const response = await createProject(payload);
-    toast.success("Project created successfully");
-    navigate("/projects")
+    toast.success(t("Project created successfully"));
+    navigate("/projects");
   };
 
   return (
@@ -61,14 +63,14 @@ export default function EditProjectForm() {
         <div className="form-grid">
           {/* Customer */}
           <div className="form-field">
-            <label>Customer</label>
+            <label>{t("Customer")}</label>
             <Controller
               name="customer"
               control={control}
-              rules={{ required: "Customer is required" }}
+              rules={{ required: t("Customer is required") }}
               render={({ field }) => (
                 <select {...field} className={errors.customer ? "input-error" : ""}>
-                  <option value="">Select Customer</option>
+                  <option value="">{t("Select Customer")}</option>
                   <option value="Ruchika Heer">Ruchika Heer</option>
                   <option value="Akil Reddy">Akil Reddy</option>
                   <option value="Aman Parvez">Aman Parvez</option>
@@ -80,17 +82,17 @@ export default function EditProjectForm() {
 
           {/* Reference Number */}
           <div className="form-field">
-            <label>Reference Number</label>
+            <label>{t("Reference Number")}</label>
             <Controller
               name="referenceNumber"
               control={control}
-              rules={{ required: "Reference Number is required" }}
+              rules={{ required: t("Reference Number is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.referenceNumber ? "input-error" : ""}
-                  placeholder="Reference Number"
+                  placeholder={t("Reference Number")}
                 />
               )}
             />
@@ -101,17 +103,17 @@ export default function EditProjectForm() {
 
           {/* Project Name */}
           <div className="form-field">
-            <label>Project Name</label>
+            <label>{t("Project Name")}</label>
             <Controller
               name="projectName"
               control={control}
-              rules={{ required: "Project Name is required" }}
+              rules={{ required: t("Project Name is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.projectName ? "input-error" : ""}
-                  placeholder="Project Name"
+                  placeholder={t("Project Name")}
                 />
               )}
             />
@@ -122,17 +124,17 @@ export default function EditProjectForm() {
 
           {/* Project Number */}
           <div className="form-field">
-            <label>Project Number</label>
+            <label>{t("Project Number")}</label>
             <Controller
               name="projectNumber"
               control={control}
-              rules={{ required: "Project Number is required" }}
+              rules={{ required: t("Project Number is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.projectNumber ? "input-error" : ""}
-                  placeholder="Project Number"
+                  placeholder={t("Project Number")}
                 />
               )}
             />
@@ -143,17 +145,17 @@ export default function EditProjectForm() {
 
           {/* Area Location */}
           <div className="form-field">
-            <label>Area Location</label>
+            <label>{t("Area Location")}</label>
             <Controller
               name="areaLocation"
               control={control}
-              rules={{ required: "Area Location is required" }}
+              rules={{ required: t("Area Location is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.areaLocation ? "input-error" : ""}
-                  placeholder="Area Location"
+                  placeholder={t("Area Location")}
                 />
               )}
             />
@@ -162,17 +164,17 @@ export default function EditProjectForm() {
 
           {/* Address */}
           <div className="form-field">
-            <label>Address</label>
+            <label>{t("Address")}</label>
             <Controller
               name="address"
               control={control}
-              rules={{ required: "Address is required" }}
+              rules={{ required: t("Address is required") }}
               render={({ field }) => (
                 <textarea
                   {...field}
                   rows={2}
                   className={errors.address ? "input-error" : ""}
-                  placeholder="Address"
+                  placeholder={t("Address")}
                 />
               )}
             />
@@ -181,11 +183,11 @@ export default function EditProjectForm() {
 
           {/* Due Date */}
           <div className="form-field">
-            <label>Due Date</label>
+            <label>{t("Due Date")}</label>
             <Controller
               name="dueDate"
               control={control}
-              rules={{ required: "Due Date is required" }}
+              rules={{ required: t("Due Date is required") }}
               render={({ field }) => (
                 <DatePicker
                   {...field}
@@ -193,7 +195,7 @@ export default function EditProjectForm() {
                   onChange={(date) => field.onChange(date)}
                   dateFormat="dd-MM-yyyy"
                   className={errors.dueDate ? "input-error" : ""}
-                  placeholderText="Select Date"
+                  placeholderText={t("Select Date")}
                 />
               )}
             />
@@ -202,17 +204,17 @@ export default function EditProjectForm() {
 
           {/* Contact */}
           <div className="form-field">
-            <label>Contact</label>
+            <label>{t("Contact")}</label>
             <Controller
               name="contact"
               control={control}
-              rules={{ required: "Contact is required" }}
+              rules={{ required: t("Contact is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.contact ? "input-error" : ""}
-                  placeholder="Contact"
+                  placeholder={t("Contact")}
                 />
               )}
             />
@@ -223,17 +225,17 @@ export default function EditProjectForm() {
 
           {/* Manager */}
           <div className="form-field">
-            <label>Manager</label>
+            <label>{t("Manager")}</label>
             <Controller
               name="manager"
               control={control}
-              rules={{ required: "Manager is required" }}
+              rules={{ required: t("Manager is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.manager ? "input-error" : ""}
-                  placeholder="Manager"
+                  placeholder={t("Manager")}
                 />
               )}
             />
@@ -244,17 +246,17 @@ export default function EditProjectForm() {
 
           {/* Staff */}
           <div className="form-field">
-            <label>Staff</label>
+            <label>{t("Staff")}</label>
             <Controller
               name="staff"
               control={control}
-              rules={{ required: "Staff is required" }}
+              rules={{ required: t("Staff is required") }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="text"
                   className={errors.staff ? "input-error" : ""}
-                  placeholder="Staff"
+                  placeholder={t("Staff")}
                 />
               )}
             />
@@ -263,19 +265,19 @@ export default function EditProjectForm() {
 
           {/* Status */}
           <div className="form-field">
-            <label>Status</label>
+            <label>{t("Status")}</label>
             <Controller
               name="status"
               control={control}
-              rules={{ required: "Status is required" }}
+              rules={{ required: t("Status is required") }}
               render={({ field }) => (
                 <select {...field} className={errors.status ? "input-error" : ""}>
-                  <option value="">Select Status</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Processing">Processing</option>
-                  <option value="Rejected">Rejected</option>
-                  <option value="On-Hold">On-Hold</option>
-                  <option value="In-Transit">In-Transit</option>
+                  <option value="">{t("Select Status")}</option>
+                  <option value="Completed">{t("Completed")}</option>
+                  <option value="Processing">{t("Processing")}</option>
+                  <option value="Rejected">{t("Rejected")}</option>
+                  <option value="On-Hold">{t("On-Hold")}</option>
+                  <option value="In-Transit">{t("In-Transit")}</option>
                 </select>
               )}
             />
@@ -284,17 +286,17 @@ export default function EditProjectForm() {
 
           {/* Email */}
           <div className="form-field">
-            <label>Email</label>
+            <label>{t("Email")}</label>
             <Controller
               name="email"
               control={control}
-              rules={{ required: "Email is required", pattern: /^\S+@\S+$/i }}
+              rules={{ required: t("Email is required"), pattern: { value: /^\S+@\S+$/i, message: t("Invalid email address") } }}
               render={({ field }) => (
                 <input
                   {...field}
                   type="email"
                   className={errors.email ? "input-error" : ""}
-                  placeholder="Email"
+                  placeholder={t("Email")}
                 />
               )}
             />
@@ -305,10 +307,10 @@ export default function EditProjectForm() {
         {/* Buttons */}
         <div className="form-buttons">
           <CustomButton type="submit">
-            Add Now
+            {t("Add Now")}
           </CustomButton>
           <button type="button" className="cancel-btn" onClick={() => navigate("/projects")}>
-            Cancel
+            {t("Cancel")}
           </button>
         </div>
       </form>

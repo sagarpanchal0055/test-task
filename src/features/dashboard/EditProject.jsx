@@ -1,28 +1,60 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, CircularProgress, Alert } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import UpdatedProjectForm from "../../components/projects/UpdatedProjectForm";
+import { useTranslation } from "react-i18next";
 
 function EditProject() {
+  const { t } = useTranslation();
   const [currentRecord, setCurrentRecord] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const params = useParams();
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_BASE_URL}projects/${params.id}`)
-      .then(response => {
-        setCurrentRecord(response.data)
+    setLoading(true);
+    axios
+      .get(`${import.meta.env.VITE_API_BASE_URL}projects/${params.id}`)
+      .then((response) => {
+        setCurrentRecord(response.data);
+        setLoading(false);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log("error", e);
-      })
-  }, [params])
+        setError(t("fetchError"));
+        setLoading(false);
+      });
+  }, [params.id, t]);
+
+  if (loading) {
+    return (
+      <Box
+        p={"24px"}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box p={"24px"}>
+        <Alert severity="error">{error}</Alert>
+      </Box>
+    );
+  }
 
   return (
     <Box p={"24px"}>
-      <Typography fontSize={"32px"} fontWeight={700} color="#202224">Edit Project</Typography>
-      
-      <UpdatedProjectForm currentRecord={currentRecord} />
+      <Typography fontSize={"32px"} fontWeight={700} color="#202224">
+        {t("editProject")}
+      </Typography>
+
+      {currentRecord && <UpdatedProjectForm currentRecord={currentRecord} />}
     </Box>
   );
 }

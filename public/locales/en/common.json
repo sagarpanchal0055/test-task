@@ -1,34 +1,192 @@
 {
-  "welcome": "Welcome to our website!",
-  "description": "This is a multi-language application",
   "Login to Account": "Login to Account",
-  "Please enter your email and password to continue" : "Please enter your email and password to continue",
-  "Email Address": "Email Address",
+  "Please enter your email and password to continue": "Please enter your email and password to continue",
+  "Email Address:": "Email Address:",
   "Password": "Password",
-  "Forget Password": "Forget Password?",
+  "Forget Password?": "Forget Password?",
   "Remember Password": "Remember Password",
+  "Logging in..": "Logging in..",
   "Login": "Login",
-  "Don’t have an account": "Don’t have an account?",
+  "Don’t have an account?": "Don’t have an account?",
   "Create Account": "Create Account",
+  "Please enter Email ID": "Please enter Email ID",
+  "Please enter your Password": "Please enter your Password",
+  "Email ID/Password incorrect!": "Email ID/Password incorrect!",
+
+  
+  "Create an Account": "Create an Account",
+  "Create an account to continue": "Create an account to continue",
+  "Please enter a valid email": "Please enter a valid email",
+  "Please enter username": "Please enter username",
+  "Username": "Username",
+  "Signing up..": "Signing up..",
+  "Sign Up": "Sign Up",
+  "Already have an account?": "Already have an account?",
+  "User created successfully": "User created successfully",
+  "Something went wrong!": "Something went wrong!",
+
+
+  "Forget Password": "Forget Password",
+  "Please enter your email and password to Change Password": "Please enter your email and password to Change Password",
+  "Updating..": "Updating..",
+  "Update Password": "Update Password",
+  "Password updated successfully": "Password updated successfully",
+
 
   "Dashboard": "Dashboard",
   "Projects": "Projects",
   "Estimates": "Estimates",
   "Logout": "Logout",
 
+
+  "Search": "Search…",
+
+
+  "Total User": "Total User",
+  "Total Order": "Total Order",
+  "Total Sales": "Total Sales",
+  "Total Pending": "Total Pending",
+  "Up from yesterday": "Up from yesterday",
+  "Up from past week": "Up from past week",
+  "Down from yesterday": "Down from yesterday",
+
+
+  "Sales": "Sales",
+  "Sales Details": "Sales Details",
+
+
+  "Product Name": "Product Name",
+  "Location": "Location",
+  "Date - Time": "Date - Time",
+  "Piece": "Piece",
+  "Amount": "Amount",
+  "Status": "Status",
+
+
+  "Customer": "Customer",
+  "Reference Number": "Reference Number",
+  "Due Date": "Due Date",
+  "Contact": "Contact",
+  "Comments": "Comments",
+  "Area Location": "Area Location",
+  "Completed": "Completed",
+  "Processing": "Processing",
+  "Rejected": "Rejected",
+  "On Hold": "On Hold",
+  "In Transit": "In Transit",
+
+
   "Filter By": "Filter By",
   "Date": "Date",
+  "*You can choose multiple date": "*You can choose multiple date",
+  "Apply Now": "Apply Now",
   "Hide Columns": "Hide Columns",
-  "Status": "Status",
+  "Select Columns": "Select Columns",
+  "*You can choose multiple Columns to hide": "*You can choose multiple Columns to hide",
+  "Select Status": "Select Status",
+  "*You can choose multiple status": "*You can choose multiple status",
   "Reset Filter": "Reset Filter",
   "Add Project": "Add Project",
-  "*You can choose multiple date": "*You can choose multiple date",
-  "*You can choose multiple Columns to hide": "*You can choose multiple Columns to hide",
-  "*You can choose multiple status": "*You can choose multiple status",
-  "Apply Now": "Apply Now",
-  "Select Columns": "Select Columns",
-  "Select Status": "Select Status",
+
+
+  "Ref Number": "Ref Number",
+  "Project Reference": "Project Reference",
+  "Project Name": "Project Name",
+  "Project Number": "Project Number",
+  "Project Location": "Project Location",
+  "Address": "Address",
+  "Assigned To": "Assigned To",
+  "Manager": "Manager",
+  "Staff": "Staff",
+  "Action": "Action",
+  "Edit": "Edit",
+  "Save": "Save",
+  "Time Log": "Time Log",
+  "+1": "+1",
+
   "Add New Project": "Add New Project",
+  "Email": "Email",
+  "Select Customer": "Select Customer",
+  "Select Date": "Select Date",
   "Add Now": "Add Now",
-  "Cancel": "Cancel"
+  "Cancel": "Cancel",
+  "Customer is required": "Customer is required",
+  "Reference Number is required": "Reference Number is required",
+  "Project Name is required": "Project Name is required",
+  "Project Number is required": "Project Number is required",
+  "Area Location is required": "Area Location is required",
+  "Address is required": "Address is required",
+  "Due Date is required": "Due Date is required",
+  "Contact is required": "Contact is required",
+  "Manager is required": "Manager is required",
+  "Staff is required": "Staff is required",
+  "Status is required": "Status is required",
+  "Email is required": "Email is required",
+  "Invalid email address": "Invalid email address",
+  "On-Hold": "On-Hold",
+  "In-Transit": "In-Transit",
+
+
+  "editProject": "Edit Project",
+  "fetchError": "Failed to fetch project details. Please try again.",
+  "Record updated successfully": "Record updated successfully",
+  "Error updating record": "Error updating record",
+
+
+  "Add Estimate": "Add Estimate",
+  "Rows per page": "Rows per page",
+  "Showing {{from}} to {{to}} of {{count}}": "Showing {{from}} to {{to}} of {{count}}",
+  "VERSION": "VERSION",
+  "PROJECT": "PROJECT",
+  "CLIENT": "CLIENT",
+  "CREATED_DATE": "CREATED DATE",
+  "LAST_MODIFIED": "LAST MODIFIED",
+  "STATUS": "Status",
+  "ACTION": "Action",
+
+
+  "ADD_NEW_ESTIMATE": "Add New Estimate",
+  "SECTION_NAME": "Section Name",
+  "ITEM_NAME": "Item Name",
+  "ITEM_DESCRIPTION": "Item Description",
+  "UNIT": "Unit",
+  "QUANTITY": "Quantity",
+  "PRICE": "Price",
+  "ITEM": "ITEM",
+  "DESCRIPTION": "DESCRIPTION",
+  "MARGIN": "Margin",
+  "TOTAL": "Total",
+  "SUB_TOTAL": "Sub Total",
+  "TOTAL_MARGIN": "Total Margin",
+  "TOTAL_AMOUNT": "Total Amount",
+  "CANCEL": "Cancel",
+  "SUBMIT": "Submit",
+  "Estimate created successfully": "Estimate created successfully",
+
+
+  "Edit Estimate": "Edit Estimate",
+  "Estimate updated successfully": "Estimate updated successfully"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
 }

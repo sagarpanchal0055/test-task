@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import ProjectsHeader from "../../components/projects/ProjectsHeader";
 import ProjectsTable from "../../components/projects/ProjectsTable";
 import axios from "axios";
-import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 
 const initialColumnVisibility = {

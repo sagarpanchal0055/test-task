@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Table,
   TableBody,
@@ -7,18 +7,18 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Checkbox,
   Box,
-  FormControlLabel,
   Avatar,
 } from "@mui/material";
 import { Edit, Save, TimelapseRounded } from "@mui/icons-material";
 import { deepOrange, deepPurple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import StatusBar from "../StatusBar";
 
 const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <Box>
@@ -32,7 +32,7 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                   rowSpan={2}
                   align="left"
                 >
-                  Customer
+                  {t("Customer")}
                 </TableCell>
               )}
               {columnVisibility.refNumber && (
@@ -41,7 +41,7 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                   rowSpan={2}
                   align="center"
                 >
-                  Ref Number
+                  {t("Ref Number")}
                 </TableCell>
               )}
 
@@ -50,18 +50,18 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                 colSpan={2}
                 align="center"
               >
-                Project Reference
+                {t("Project Reference")}
                 <TableCell
                   sx={{ border: "none", minWidth: "140px", fontSize: "14px", fontWeight: "800", borderRight: "1px solid lightgrey", padding: "0 16px", whiteSpace: "nowrap", width: "auto" }}
                   align="right"
                 >
-                  Project Name
+                  {t("Project Name")}
                 </TableCell>
                 <TableCell
                   align="left"
-                  sx={{ border: "none", minWidth: "140px", fontSize: "14px", fontWeight: "800",  padding: "0 16px", whiteSpace: "nowrap", width: "auto" }}
+                  sx={{ border: "none", minWidth: "140px", fontSize: "14px", fontWeight: "800", padding: "0 16px", whiteSpace: "nowrap", width: "auto" }}
                 >
-                  Project Number
+                  {t("Project Number")}
                 </TableCell>
               </TableCell>
               {columnVisibility.areaLocation && (
@@ -70,30 +70,21 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                   colSpan={2}
                   align="center"
                 >
-                  Project Location
+                  {t("Project Location")}
                   {columnVisibility.areaLocation && (
                     <TableCell
-                      sx={{
-                        border: "none", fontSize: "14px", fontWeight: "800", borderRight: "1px solid lightgrey", padding: "0 16px",
-                        whiteSpace: "nowrap",
-                        minWidth: "140px",
-                        width: "auto",
-                      }}
+                      sx={{ border: "none", fontSize: "14px", fontWeight: "800", borderRight: "1px solid lightgrey", padding: "0 16px", whiteSpace: "nowrap", minWidth: "140px", width: "auto" }}
                       align="right"
                     >
-                      Area Location
+                      {t("Area Location")}
                     </TableCell>
                   )}
                   {columnVisibility.areaLocation && (
                     <TableCell
-                      sx={{
-                        border: "none", fontSize: "14px", fontWeight: "800", padding: "0 16px",
-                        whiteSpace: "nowrap",minWidth: "140px",
-                        width: "auto",
-                      }}
+                      sx={{ border: "none", fontSize: "14px", fontWeight: "800", padding: "0 16px", whiteSpace: "nowrap", minWidth: "140px", width: "auto" }}
                       align="left"
                     >
-                      Address
+                      {t("Address")}
                     </TableCell>
                   )}
                 </TableCell>
@@ -103,7 +94,7 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                   sx={{ border: "none", fontSize: "14px", fontWeight: "800", borderRight: "1px solid lightgrey", padding: "0 16px", whiteSpace: "nowrap", width: "auto" }}
                   align="center"
                 >
-                  Due Date
+                  {t("Due Date")}
                 </TableCell>
               )}
               {columnVisibility.contact && (
@@ -111,7 +102,7 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                   sx={{ border: "none", fontSize: "14px", fontWeight: "800", borderRight: "1px solid lightgrey", padding: "0 16px", whiteSpace: "nowrap", width: "auto" }}
                   align="center"
                 >
-                  Contact
+                  {t("Contact")}
                 </TableCell>
               )}
 
@@ -120,18 +111,18 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                 colSpan={2}
                 align="center"
               >
-                Assigned To
+                {t("Assigned To")}
                 <TableCell
                   sx={{ border: "none", fontSize: "14px", fontWeight: "800", borderRight: "1px solid lightgrey", padding: "0 16px", whiteSpace: "nowrap", width: "auto", minWidth: "140px" }}
                   align="right"
                 >
-                  Manager
+                  {t("Manager")}
                 </TableCell>
                 <TableCell
                   align="left"
                   sx={{ border: "none", fontSize: "14px", minWidth: "140px", fontWeight: "800", padding: "0 16px", whiteSpace: "nowrap", width: "auto" }}
                 >
-                  Staff
+                  {t("Staff")}
                 </TableCell>
               </TableCell>
               {columnVisibility.status && (
@@ -139,14 +130,14 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                   sx={{ border: "none", fontSize: "14px", fontWeight: "800", borderRight: "1px solid lightgrey", padding: "0 16px", whiteSpace: "nowrap", width: "auto" }}
                   align="center"
                 >
-                  Status
+                  {t("Status")}
                 </TableCell>
               )}
               <TableCell
                 sx={{ border: "none", fontSize: "14px", fontWeight: "800", borderRight: "1px solid lightgrey", padding: "0 16px", whiteSpace: "nowrap", width: "auto" }}
                 align="center"
               >
-                Action
+                {t("Action")}
               </TableCell>
 
               {columnVisibility.comments && (
@@ -154,14 +145,14 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                   sx={{ border: "none", fontSize: "14px", fontWeight: "800", borderRight: "1px solid lightgrey", padding: "0 16px", whiteSpace: "nowrap", width: "auto" }}
                   align="center"
                 >
-                  Comments
+                  {t("Comments")}
                 </TableCell>
               )}
             </TableRow>
           </TableHead>
 
           <TableBody>
-            {projectData.map((row, index) => (
+            {projectData.map((row) => (
               <TableRow key={row.id}>
                 {columnVisibility.customer && (
                   <TableCell sx={{ whiteSpace: "nowrap", width: "auto", minWidth: "140px" }}>
@@ -211,10 +202,7 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                     <StatusBar status={row.status.toLowerCase()} />
                   </TableCell>
                 )}
-                <TableCell
-                  sx={{ whiteSpace: "nowrap", width: "auto", minWidth: "140px" }}
-                  align="center"
-                >
+                <TableCell sx={{ whiteSpace: "nowrap", width: "auto", minWidth: "140px" }} align="center">
                   <Box display={"flex"} gap={1}>
                     <Edit sx={{ cursor: "pointer" }} onClick={() => navigate(`/edit-project/${row.id}`)} />
                     <Save sx={{ cursor: "pointer" }} />
@@ -224,10 +212,10 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                 {columnVisibility.comments && (
                   <TableCell sx={{ whiteSpace: "nowrap", width: "auto", minWidth: "140px" }}>
                     <Box display={"flex"} gap={1}>
-                      <Avatar>H</Avatar>
-                      <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
-                      <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
-                      <Avatar>+1</Avatar>
+                      <Avatar>{t("+1")}</Avatar>
+                      <Avatar sx={{ bgcolor: deepOrange[500] }}>{t("+1")}</Avatar>
+                      <Avatar sx={{ bgcolor: deepPurple[500] }}>{t("+1")}</Avatar>
+                      <Avatar>{t("+1")}</Avatar>
                     </Box>
                   </TableCell>
                 )}

@@ -1,30 +1,18 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  IconButton,
-  MenuItem,
-  Popover,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, IconButton, Popover, Typography } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import CustomButton from "../Button";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
+import "react-datepicker/dist/react-datepicker.css";
 
 const ProjectsHeader = ({
   selectedDates,
   setSelectedDates,
   setStatus,
-  initialColumnVisibility,
   columnVisibility,
   handleToggleColumn,
   handleToggleStatues,
@@ -32,7 +20,7 @@ const ProjectsHeader = ({
   initialStatues,
   setSelectedStatus,
   handleDateChange,
-  setDates
+  setDates,
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -42,9 +30,7 @@ const ProjectsHeader = ({
     setAnchorElDate(anchorElDate ? null : event.currentTarget);
   };
   const handleCloseDate = () => {
-    setDates(selectedDates.map(date => {
-      return format(date, 'dd/MM/yyyy')
-    }).join("|"))
+    setDates(selectedDates.map((date) => format(date, "dd/MM/yyyy")).join("|"));
     setAnchorElDate(null);
   };
   const openDate = Boolean(anchorElDate);
@@ -93,9 +79,13 @@ const ProjectsHeader = ({
             padding: "15px",
           }}
         >
-          {selectedDates.length > 0 ? selectedDates.map(date => {
-            return <Typography fontWeight={"bold"}>{format(date, "dd MMM yyyy")}</Typography>
-          }) : t("Date")}
+          {selectedDates.length > 0
+            ? selectedDates.map((date) => (
+                <Typography fontWeight={"bold"} key={date.toString()}>
+                  {format(date, "dd MMM yyyy")}
+                </Typography>
+              ))
+            : t("Date")}
         </Box>
         <Popover
           id={idDate}
@@ -170,7 +160,7 @@ const ProjectsHeader = ({
               justifyContent={"space-around"}
               gap={2}
             >
-              {Object.keys(initialColumnVisibility).map((column) => (
+              {Object.keys(columnVisibility).map((column) => (
                 <Box
                   width={160}
                   height={"auto"}
@@ -183,6 +173,7 @@ const ProjectsHeader = ({
                   color={columnVisibility[column] ? "white" : "black"}
                   sx={{ cursor: "pointer" }}
                   onClick={() => handleToggleColumn(column)}
+                  key={column}
                 >
                   {column.charAt(0).toUpperCase() + column.slice(1)}
                 </Box>
@@ -236,7 +227,7 @@ const ProjectsHeader = ({
               justifyContent={"space-around"}
               gap={2}
             >
-              {Object.keys(initialStatues).map((column) => (
+              {Object.keys(selectedStatus).map((column) => (
                 <Box
                   width={160}
                   height={"auto"}
@@ -249,6 +240,7 @@ const ProjectsHeader = ({
                   color={selectedStatus[column] ? "white" : "black"}
                   sx={{ cursor: "pointer" }}
                   onClick={() => handleToggleStatues(column)}
+                  key={column}
                 >
                   {column.charAt(0).toUpperCase() + column.slice(1)}
                 </Box>
@@ -271,13 +263,13 @@ const ProjectsHeader = ({
             borderRadius: "0",
             padding: "14.5px",
             border: "1px solid rgba(0, 0, 0, 0.23)",
-            color: "red"
+            color: "red",
           }}
           onClick={() => {
             setSelectedDates([]);
-            setDates("")
+            setDates("");
             setStatus("");
-            setSelectedStatus(initialStatues)
+            setSelectedStatus(initialStatues);
           }}
           variant="text"
         >
