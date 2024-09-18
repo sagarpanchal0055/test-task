@@ -179,7 +179,7 @@ const Login = () => {
                   sx={{
                     textAlign: "right",
                     textTransform: "capitalize",
-                    color: "#202224",
+                    color: "secondary.text",
                     mt: 1,
                     fontSize: 14,
                   }}

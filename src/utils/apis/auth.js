@@ -50,7 +50,7 @@ const forgotPassword = async (email, newPassword) => {
       const resp = await axios.patch(`${import.meta.env.VITE_API_BASE_URL}users/${userId}`, {
         password: newPassword
       });
-      console.log("resp ", resp);
+      
       console.log('Password updated successfully!');
 
       return resp

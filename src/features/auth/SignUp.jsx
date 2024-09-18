@@ -148,7 +148,7 @@ const SignUp = () => {
                 <Button
                   component={ReactRouterLink}
                   to="/forgot-password"
-                  sx={{ textAlign: "right", textTransform: "capitalize", color: "#202224", mt: 1, fontSize: 14 }}
+                  sx={{ textAlign: "right", textTransform: "capitalize", color: "secondary.text", mt: 1, fontSize: 14 }}
                 >
                   {t("Forget Password?")}
                 </Button>

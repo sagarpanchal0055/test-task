@@ -49,7 +49,6 @@ const ForgotPassword = () => {
     setLoader(true);
 
     const response = await forgotPassword(email, password);
-    console.log("response after", response);
     
     if (response?.data?.id) {
       toast.success(t("Password updated successfully"));

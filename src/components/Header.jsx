@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useThemeContext } from '../context/ThemeContext';
 import { AppBar, Toolbar, IconButton, InputBase, Box, Avatar, Badge, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationIcon from './../assets/notificationIcon.png';
 import UKFlag from './../assets/UKFlag.png';
+import FRFlag from './../assets/FRFlag.jpeg';
 import NightIcon from './../assets/NightIcon.png';
 import LightIcon from './../assets/LightIcon.png';
 import LanguageSelect from './LanguageSelect';
@@ -14,7 +15,9 @@ import { useTranslation } from 'react-i18next';
 const Header = ({ setShow }) => {
   const { t } = useTranslation()
   const { darkMode, toggleTheme } = useThemeContext();
-  const { username, role } = useSelector((state) => state.auth);  
+  const { username, role } = useSelector((state) => state.auth);
+  let localLanguageStored = localStorage.getItem("curLang")
+  const [language, setLanguage] = useState(localLanguageStored ? localLanguageStored : 'en');
 
   return (
     <AppBar position="static" color="default" elevation={0}>
@@ -38,8 +41,8 @@ const Header = ({ setShow }) => {
             </Badge>
           </IconButton>
           <IconButton>
-            <img src={UKFlag} alt="UK Flag" />
-            <LanguageSelect />
+            <img width={"40px"} height={"27px"} style={{ borderRadius: "4px" }} src={language === "en" ? UKFlag : FRFlag} alt="UK Flag" />
+            <LanguageSelect language={language} setLanguage={setLanguage} />
           </IconButton>
           <Box display="flex" alignItems="center">
             <Avatar alt="User" src="/path/to/avatar.jpg" />
@@ -47,7 +50,7 @@ const Header = ({ setShow }) => {
               <Typography fontSize="14px" fontWeight={700} textTransform="capitalize">
                 {username}
               </Typography>
-              <Typography fontSize="12px" fontWeight={600} color="#565656">
+              <Typography fontSize="12px" fontWeight={600} color="secondary.text">
                 {role}
               </Typography>
             </Box>

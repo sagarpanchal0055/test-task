@@ -51,7 +51,6 @@
       "email": "test@test.com"
     },
     {
-      "id": "a882",
       "customer": "Akil Reddy",
       "refNumber": "Test",
       "projectName": "Test111",
@@ -62,8 +61,24 @@
       "contact": "test111",
       "manager": "Sagar",
       "staff": "New",
-      "status": "Rejected",
-      "email": "test@test.com"
+      "status": "Completed",
+      "email": "test@test.com",
+      "id": "a882"
+    },
+    {
+      "customer": "Akil Reddy",
+      "refNumber": "qwe",
+      "projectName": "qwe",
+      "projectNumber": "qwe",
+      "areaLocation": "qwe",
+      "address": "qwe",
+      "dueDate": "27/09/2024",
+      "contact": "13456789",
+      "manager": "qwe",
+      "staff": "qwe",
+      "status": "In Transit",
+      "email": "qwe@qwe.com",
+      "id": "9nsnqBQ"
     }
   ],
   "estimates": [
@@ -72,7 +87,7 @@
       "project": "Christine Brooks",
       "client": "089 Kutch green",
       "createdDate": "16 Sep 2024",
-      "lastModified": "18 Sep 2024",
+      "lastModified": "19 Sep 2024",
       "status": "Created",
       "sections": [
         {
@@ -85,9 +100,9 @@
               "itemName": "Lamps",
               "description": "Item Description",
               "unit": "QTY",
-              "quantity": 100,
-              "price": 100,
-              "margin": "10"
+              "quantity": "10",
+              "price": "10",
+              "margin": "6"
             },
             {
               "id": 2,
@@ -355,6 +370,119 @@
         }
       ],
       "id": 4
+    },
+    {
+      "version": "00001",
+      "project": "Christine Brooks",
+      "client": "089 Kutch green",
+      "createdDate": "18 Sep 2024",
+      "lastModified": "18 Sep 2024",
+      "status": "Created",
+      "sections": [
+        {
+          "id": 1,
+          "sectionName": "test",
+          "items": [
+            {
+              "id": 1,
+              "itemName": "test1",
+              "description": "desc1",
+              "unit": "qty",
+              "quantity": "10",
+              "price": "10",
+              "margin": "10"
+            },
+            {
+              "id": 2,
+              "itemName": "utem2",
+              "description": "desc2",
+              "unit": "qty",
+              "quantity": "10",
+              "price": "10",
+              "margin": "10"
+            }
+          ]
+        }
+      ],
+      "id": 5
+    },
+    {
+      "version": "00001",
+      "project": "Christine Brooks",
+      "client": "089 Kutch green",
+      "createdDate": "19 Sep 2024",
+      "status": "Created",
+      "lastModified": "19 Sep 2024",
+      "sections": [
+        {
+          "id": 1,
+          "sectionName": "test",
+          "items": [
+            {
+              "id": 1,
+              "itemName": "test",
+              "description": "test",
+              "unit": "qty",
+              "quantity": "1",
+              "price": "10000",
+              "margin": "2.5"
+            }
+          ]
+        }
+      ],
+      "id": 6
+    },
+    {
+      "version": "00001",
+      "project": "Christine Brooks",
+      "client": "089 Kutch green",
+      "createdDate": "19 Sep 2024",
+      "status": "Created",
+      "lastModified": "19 Sep 2024",
+      "sections": [
+        {
+          "id": 1,
+          "sectionName": "test",
+          "items": [
+            {
+              "id": 1,
+              "itemName": "test",
+              "description": "test",
+              "unit": "qty",
+              "quantity": "200",
+              "price": "10",
+              "margin": "10"
+            }
+          ]
+        }
+      ],
+      "id": 7
+    },
+    {
+      "version": "00001",
+      "project": "Christine Brooks",
+      "client": "089 Kutch green",
+      "createdDate": "19 Sep 2024",
+      "status": "Created",
+      "lastModified": "19 Sep 2024",
+      "sections": [
+        {
+          "id": 1,
+          "sectionName": "test",
+          "items": [
+            {
+              "id": 1,
+              "itemName": "test",
+              "description": "test",
+              "unit": "qty",
+              "quantity": "10",
+              "price": "10",
+              "margin": "100"
+            }
+          ]
+        }
+      ],
+      "id": 8
     }
   ]
 }

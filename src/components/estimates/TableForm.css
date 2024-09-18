@@ -32,3 +32,8 @@
   margin: 5px 0;
   font-weight: bold;
 }
+
+.estimate-table .error {
+  color: red;
+  font-size: 14px;
+}

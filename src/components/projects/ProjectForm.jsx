@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import "./EditProjectForm.css";
-import CustomButton from "../Button";
 import { useNavigate } from "react-router-dom";
-import { createProject } from "../../utils/apis/project";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import CustomButton from "../Button";
+import { createProject, updateProject } from "../../utils/apis/project";
+import "react-datepicker/dist/react-datepicker.css";
+import "./EditProjectForm.css";
 
 const defaultValues = {
   customer: "",
@@ -24,17 +24,37 @@ const defaultValues = {
   email: "",
 };
 
-export default function EditProjectForm() {
+export default function ProjectForm({ currentRecord, isEditing = false }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues,
     mode: "onSubmit",
   });
+
+  useEffect(() => {
+    if (currentRecord && isEditing) {
+      const [day, month, year] = currentRecord?.dueDate.split('/');
+      const formattedDate = new Date(`${year}-${month}-${day}`);
+      setValue("customer", currentRecord.customer);
+      setValue("referenceNumber", currentRecord.refNumber);
+      setValue("projectName", currentRecord.projectName);
+      setValue("projectNumber", currentRecord.projectNumber);
+      setValue("areaLocation", currentRecord.areaLocation);
+      setValue("address", currentRecord.address);
+      setValue("dueDate", formattedDate);
+      setValue("contact", currentRecord.contact);
+      setValue("manager", currentRecord.manager);
+      setValue("staff", currentRecord.staff);
+      setValue("status", currentRecord.status);
+      setValue("email", currentRecord.email);
+    }
+  }, [currentRecord, setValue, isEditing]);
 
   const onSubmit = async (data) => {
     let payload = {
@@ -52,8 +72,13 @@ export default function EditProjectForm() {
       email: data.email
     };
     
-    const response = await createProject(payload);
-    toast.success(t("Project created successfully"));
+    if (isEditing) {
+      await updateProject(currentRecord.id, payload);
+      toast.success(t("Record updated successfully"));
+    } else {
+      await createProject(payload);
+      toast.success(t("Project created successfully"));
+    }
     navigate("/projects");
   };
 
@@ -276,8 +301,8 @@ export default function EditProjectForm() {
                   <option value="Completed">{t("Completed")}</option>
                   <option value="Processing">{t("Processing")}</option>
                   <option value="Rejected">{t("Rejected")}</option>
-                  <option value="On-Hold">{t("On-Hold")}</option>
-                  <option value="In-Transit">{t("In-Transit")}</option>
+                  <option value="On Hold">{t("On-Hold")}</option>
+                  <option value="In Transit">{t("In-Transit")}</option>
                 </select>
               )}
             />

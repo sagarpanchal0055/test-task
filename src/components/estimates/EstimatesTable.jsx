@@ -7,7 +7,8 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Box
+  Box,
+  Card
 } from "@mui/material";
 import { Edit } from "@mui/icons-material";
 import StatusBar from "../StatusBar";
@@ -15,11 +16,11 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
 
 const EstimatesTable = ({ estimatesData = [] }) => {
-  const { t } = useTranslation(); // Use translation hook
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
-    <Box>
+    <Card sx={{ p: "16px" }}>
       <TableContainer component={Paper}>
         <Table>
           <TableHead sx={{ marginBottom: "16px" }}>
@@ -202,7 +203,7 @@ const EstimatesTable = ({ estimatesData = [] }) => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Box>
+    </Card>
   );
 };
 

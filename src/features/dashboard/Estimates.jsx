@@ -1,18 +1,19 @@
-import { Box, TablePagination, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { Box, CircularProgress, TablePagination, Typography } from "@mui/material";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import CustomButton from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import EstimatesTable from "../../components/estimates/EstimatesTable";
+import useFetchEstimates from "../../hooks/useFetchEstimates";
+import FullScreenLoader from "../../components/FullScreenLoader";
 
 function Estimates() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [estimates, setEstimates] = useState([]);
   const [page, setPage] = useState(0);
-  const [count, setCount] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const { estimates, count, loading, error } = useFetchEstimates(page, rowsPerPage);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -23,30 +24,27 @@ function Estimates() {
     setPage(0);
   };
 
-  useEffect(() => {
-    const fetchEstimates = async () => {
-      try {
-        const responseOfCount = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}estimates`
-        );
-        setCount(responseOfCount.data.length);
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}estimates`,
-          {
-            params: {
-              _page: page + 1,
-              _limit: rowsPerPage,
-            },
-          }
-        );
-        setEstimates(response.data);
-      } catch (error) {
-        console.error("Error fetching estimates:", error);
-      }
-    };
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          zIndex: 9999,
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    )
+  }
 
-    fetchEstimates();
-  }, [page, rowsPerPage]);
+  if (error) {
+    return <Typography>{t("Error fetching estimates.")}</Typography>;
+  }
 
   return (
     <Box p={"24px"}>
@@ -56,7 +54,7 @@ function Estimates() {
         alignItems={"center"}
         mb={3}
       >
-        <Typography fontSize={"32px"} fontWeight={700} color="#202224">
+        <Typography fontSize={"32px"} fontWeight={700} color="secondary.text">
           {t("Estimates")}
         </Typography>
 
@@ -64,6 +62,7 @@ function Estimates() {
           {t("Add Estimate")}
         </CustomButton>
       </Box>
+
       <EstimatesTable estimatesData={estimates} />
 
       <TablePagination

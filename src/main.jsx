@@ -9,10 +9,11 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { CustomThemeProvider } from "./context/ThemeContext";
 import './i18n';
+import FullScreenLoader from "./components/FullScreenLoader";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Suspense fallback={<h3>Loading...</h3>}>
+  <Suspense fallback={<FullScreenLoader />}>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <React.StrictMode>

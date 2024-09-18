@@ -47,7 +47,7 @@ const App = () => {
   return (
     <Box m={4}>
       <Box mt={4}>
-        <Typography variant="h4" fontWeight={700} color="#202224" mb={4}>
+        <Typography variant="h4" fontWeight={700} color="secondary.text" mb={4}>
           {t("Dashboard")}
         </Typography>
         <Stack direction="row" spacing={2} justifyContent="space-between">

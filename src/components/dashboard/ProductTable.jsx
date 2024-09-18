@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Box } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Box, Typography } from '@mui/material';
 
 const ProductTable = () => {
   const { t } = useTranslation();
@@ -50,9 +50,11 @@ const ProductTable = () => {
 
   return (
     <TableContainer component={Paper}>
+      <Typography variant="h6" fontWeight={700} color="secondary.text">{t('Table')}</Typography>
+
       <Table>
         <TableHead>
-          <TableRow>
+          <TableRow sx={{ "& th" : { fontWeight: 700 } }}>
             <TableCell>{t('Product Name')}</TableCell>
             <TableCell>{t('Location')}</TableCell>
             <TableCell>{t('Date - Time')}</TableCell>

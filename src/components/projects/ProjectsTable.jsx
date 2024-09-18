@@ -9,6 +9,7 @@ import {
   Paper,
   Box,
   Avatar,
+  Card,
 } from "@mui/material";
 import { Edit, Save, TimelapseRounded } from "@mui/icons-material";
 import { deepOrange, deepPurple } from "@mui/material/colors";
@@ -21,7 +22,7 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
   const { t } = useTranslation();
 
   return (
-    <Box>
+    <Card sx={{ p: "16px" }}>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -224,7 +225,7 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Box>
+    </Card>
   );
 };
 

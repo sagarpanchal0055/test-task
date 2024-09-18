@@ -20,13 +20,13 @@ const StatsCard = ({ title, value, icon, trend, trendText, up = true }) => {
           spacing={2}
         >
           <Box>
-            <Typography fontSize={"16px"} color="#202224" variant="h6">
+            <Typography fontSize={"16px"} color="textSecondary" variant="h6">
               {title}
             </Typography>
             <Typography
               fontSize={"28px"}
               fontWeight={700}
-              color="#202224"
+              color="secondary.text"
               variant="h4"
             >
               {value}
@@ -40,6 +40,7 @@ const StatsCard = ({ title, value, icon, trend, trendText, up = true }) => {
           display={"flex"}
           alignItems={"center"}
           gap={2}
+          mt={4}
         >
           {up ? (
             <TrendingUpRoundedIcon sx={{ color: "#00B69B" }} />

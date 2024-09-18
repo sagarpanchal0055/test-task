@@ -2,6 +2,17 @@ import { createTheme } from '@mui/material/styles';
 
 // Light Theme
 const lightTheme = createTheme({
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: '16px',
+          boxShadow: 'none',
+          border: '1px solid #ccc',
+        },
+      },
+    },
+  },
   typography: {
     fontFamily: '"Nunito Sans", sans-serif',
   },
@@ -9,6 +20,10 @@ const lightTheme = createTheme({
     mode: 'light',
     primary: {
       main: '#4C8BF5',
+    },
+    secondary: {
+      main: '#ffffff',
+      text: '#202224'
     },
     background: {
       default: '#f7f7f7',
@@ -22,6 +37,17 @@ const lightTheme = createTheme({
 
 // Dark Theme
 const darkTheme = createTheme({
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: '16px',
+          boxShadow: 'none',
+          border: '1px solid #ccc',
+        },
+      },
+    },
+  },
   typography: {
     fontFamily: '"Nunito Sans", sans-serif',
   },
@@ -30,9 +56,13 @@ const darkTheme = createTheme({
     primary: {
       main: '#90caf9',
     },
+    secondary: {
+      main: '#273142',
+      text: '#fff'
+    },
     background: {
-      default: '#121212',
-      paper: '#1f1f1f',
+      default: '#1B2431',
+      paper: '#273142',
     },
     text: {
       primary: '#ffffff',

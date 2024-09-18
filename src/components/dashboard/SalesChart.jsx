@@ -52,7 +52,7 @@ const SalesChart = () => {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h6">{t('Sales Details')}</Typography>
+        <Typography variant="h6" fontWeight={700} color="secondary.text">{t('Sales Details')}</Typography>
         <Box mt={2}>
           <Line data={data} options={options} />
         </Box>

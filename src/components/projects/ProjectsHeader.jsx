@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import { Box, Button, IconButton, Popover, Typography } from "@mui/material";
+import React, { useState, useRef } from "react";
+import { Box, Button, IconButton, Typography } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import CustomButton from "../Button";
 import { useNavigate } from "react-router-dom";
-import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
+import DateFilterPopover from "../DateFilterPopover";
+import CustomButton from "../Button";
+import ColumnVisibilityPopover from "../ColumnVisibilityPopover";
+import Popover from "../Popover";
+import StatusPopover from "../StatusPopover";
 import "react-datepicker/dist/react-datepicker.css";
 
 const ProjectsHeader = ({
@@ -20,43 +23,33 @@ const ProjectsHeader = ({
   initialStatues,
   setSelectedStatus,
   handleDateChange,
+  initialStatuses,
   setDates,
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const [anchorElDate, setAnchorElDate] = useState(null);
-  const handleClickDate = (event) => {
-    setAnchorElDate(anchorElDate ? null : event.currentTarget);
-  };
+  const [anchorElColumns, setAnchorElColumns] = useState(null);
+  const [anchorElStatus, setAnchorElStatus] = useState(null);
+
+  const datePickerRef = useRef(null);
+
+  const handlePopoverToggle = (anchor, setAnchor) => (event) =>
+    setAnchor(anchor ? null : event.currentTarget);
+
   const handleCloseDate = () => {
     setDates(selectedDates.map((date) => format(date, "dd/MM/yyyy")).join("|"));
     setAnchorElDate(null);
   };
-  const openDate = Boolean(anchorElDate);
-  const idDate = openDate ? "simple-popover-Date" : undefined;
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const handleClick = (event) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
+  const handleResetFilter = () => {
+    setSelectedDates([]);
+    setDates("");
+    setStatus("");
+    setSelectedStatus(initialStatues);
+    setSelectedStatus(initialStatuses);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
-  const [anchorElStatus, setAnchorElStatus] = useState(null);
-  const handleClickStatus = (event) => {
-    setAnchorElStatus(anchorElStatus ? null : event.currentTarget);
-  };
-  const handleCloseStatus = () => {
-    setAnchorElStatus(null);
-  };
-  const openStatus = Boolean(anchorElStatus);
-  const idStatus = openStatus ? "simple-popover-2" : undefined;
-
-  const datePickerRef = React.useRef(null);
 
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -66,17 +59,16 @@ const ProjectsHeader = ({
             <FilterListIcon />
           </IconButton>
         </Box>
-
         <Typography p={"15px"} sx={{ border: "1px solid rgba(0, 0, 0, 0.23)" }}>
           {t("Filter By")}
         </Typography>
-
         <Box
-          onClick={handleClickDate}
+          onClick={handlePopoverToggle(anchorElDate, setAnchorElDate)}
           sx={{
             borderRadius: "0",
             border: "1px solid rgba(0, 0, 0, 0.23)",
             padding: "15px",
+            cursor: "pointer"
           }}
         >
           {selectedDates.length > 0
@@ -88,175 +80,64 @@ const ProjectsHeader = ({
             : t("Date")}
         </Box>
         <Popover
-          id={idDate}
-          open={openDate}
+          id="simple-popover-Date"
+          open={Boolean(anchorElDate)}
           anchorEl={anchorElDate}
           onClose={handleCloseDate}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center",
-          }}
         >
-          <Box p={4}>
-            <DatePicker
-              ref={datePickerRef}
-              selected={null}
-              onChange={handleDateChange}
-              highlightDates={selectedDates}
-              dateFormat="dd MMM yyyy"
-              open
-              inline
-              placeholderText={t("Date")}
-            />
-
-            <Typography fontSize={"14px"} fontWeight={400} color="#434343">
-              {t("*You can choose multiple date")}
-            </Typography>
-
-            <Box textAlign={"center"} my={2} onClick={handleCloseDate}>
-              <CustomButton>{t("Apply Now")}</CustomButton>
-            </Box>
-          </Box>
+          <DateFilterPopover
+            datePickerRef={datePickerRef}
+            handleDateChange={handleDateChange}
+            selectedDates={selectedDates}
+            handleCloseDate={handleCloseDate}
+          />
         </Popover>
-
         <Box
-          onClick={handleClick}
+          onClick={handlePopoverToggle(anchorElColumns, setAnchorElColumns)}
           sx={{
             borderRadius: "0",
             border: "1px solid rgba(0, 0, 0, 0.23)",
             padding: "15px",
+            cursor: "pointer"
           }}
         >
           {t("Hide Columns")}
         </Box>
         <Popover
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center",
-          }}
+          id="simple-popover-columns"
+          open={Boolean(anchorElColumns)}
+          anchorEl={anchorElColumns}
+          onClose={handlePopoverToggle(anchorElColumns, setAnchorElColumns)}
         >
-          <Box width={600} p={4}>
-            <Typography fontWeight={700} fontSize={"18px"}>
-              {t("Select Columns")}
-            </Typography>
-
-            <Box
-              my={2}
-              display="flex"
-              flexWrap={"wrap"}
-              alignItems={"center"}
-              justifyContent={"space-around"}
-              gap={2}
-            >
-              {Object.keys(columnVisibility).map((column) => (
-                <Box
-                  width={160}
-                  height={"auto"}
-                  border={"1px solid lightgrey"}
-                  textAlign={"center"}
-                  borderRadius={15}
-                  textTransform={"uppercase"}
-                  p={1}
-                  bgcolor={columnVisibility[column] ? "#4880FF" : ""}
-                  color={columnVisibility[column] ? "white" : "black"}
-                  sx={{ cursor: "pointer" }}
-                  onClick={() => handleToggleColumn(column)}
-                  key={column}
-                >
-                  {column.charAt(0).toUpperCase() + column.slice(1)}
-                </Box>
-              ))}
-            </Box>
-
-            <Typography fontSize={"14px"} fontWeight={400} color="#434343">
-              {t("*You can choose multiple Columns to hide")}
-            </Typography>
-
-            <Box textAlign={"center"} my={2} onClick={handleClose}>
-              <CustomButton>{t("Apply Now")}</CustomButton>
-            </Box>
-          </Box>
+          <ColumnVisibilityPopover
+            columnVisibility={columnVisibility}
+            handleToggleColumn={handleToggleColumn}
+            setAnchorElColumns={setAnchorElColumns}
+          />
         </Popover>
-
         <Box
-          onClick={handleClickStatus}
+          onClick={handlePopoverToggle(anchorElStatus, setAnchorElStatus)}
           sx={{
             borderRadius: "0",
             border: "1px solid rgba(0, 0, 0, 0.23)",
             padding: "15px",
+            cursor: "pointer"
           }}
         >
           {t("Status")}
         </Box>
         <Popover
-          id={idStatus}
-          open={openStatus}
+          id="simple-popover-status"
+          open={Boolean(anchorElStatus)}
           anchorEl={anchorElStatus}
-          onClose={handleCloseStatus}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center",
-          }}
+          onClose={handlePopoverToggle(anchorElStatus, setAnchorElStatus)}
         >
-          <Box width={600} p={4}>
-            <Typography fontWeight={700} fontSize={"18px"}>
-              {t("Select Status")}
-            </Typography>
-
-            <Box
-              my={2}
-              display="flex"
-              flexWrap={"wrap"}
-              alignItems={"center"}
-              justifyContent={"space-around"}
-              gap={2}
-            >
-              {Object.keys(selectedStatus).map((column) => (
-                <Box
-                  width={160}
-                  height={"auto"}
-                  border={"1px solid lightgrey"}
-                  textAlign={"center"}
-                  borderRadius={15}
-                  textTransform={"uppercase"}
-                  p={1}
-                  bgcolor={selectedStatus[column] ? "#4880FF" : ""}
-                  color={selectedStatus[column] ? "white" : "black"}
-                  sx={{ cursor: "pointer" }}
-                  onClick={() => handleToggleStatues(column)}
-                  key={column}
-                >
-                  {column.charAt(0).toUpperCase() + column.slice(1)}
-                </Box>
-              ))}
-            </Box>
-
-            <Typography fontSize={"14px"} fontWeight={400} color="#434343">
-              {t("*You can choose multiple status")}
-            </Typography>
-
-            <Box textAlign={"center"} my={2} onClick={handleCloseStatus}>
-              <CustomButton>{t("Apply Now")}</CustomButton>
-            </Box>
-          </Box>
+          <StatusPopover
+            selectedStatus={selectedStatus}
+            handleToggleStatues={handleToggleStatues}
+            setAnchorElStatus={setAnchorElStatus}
+          />
         </Popover>
-
         <Button
           startIcon={<RestartAltIcon />}
           sx={{
@@ -265,18 +146,12 @@ const ProjectsHeader = ({
             border: "1px solid rgba(0, 0, 0, 0.23)",
             color: "red",
           }}
-          onClick={() => {
-            setSelectedDates([]);
-            setDates("");
-            setStatus("");
-            setSelectedStatus(initialStatues);
-          }}
+          onClick={handleResetFilter}
           variant="text"
         >
           {t("Reset Filter")}
         </Button>
       </Box>
-
       <Box>
         <CustomButton onClick={() => navigate("/projects/add-project")}>
           {t("Add Project")}

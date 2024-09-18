@@ -8,7 +8,7 @@ function AddEstimate() {
 
   return (
     <Box p={"24px"}>
-      <Typography fontSize={"32px"} fontWeight={700} color="#202224">
+      <Typography fontSize={"32px"} fontWeight={700} color="secondary.text">
         {t('ADD_NEW_ESTIMATE')}
       </Typography>
       

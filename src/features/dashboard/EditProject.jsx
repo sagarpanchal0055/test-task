@@ -2,8 +2,8 @@ import { Box, Typography, CircularProgress, Alert } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import UpdatedProjectForm from "../../components/projects/UpdatedProjectForm";
 import { useTranslation } from "react-i18next";
+import ProjectForm from "../../components/projects/ProjectForm";
 
 function EditProject() {
   const { t } = useTranslation();
@@ -50,11 +50,11 @@ function EditProject() {
 
   return (
     <Box p={"24px"}>
-      <Typography fontSize={"32px"} fontWeight={700} color="#202224">
+      <Typography fontSize={"32px"} fontWeight={700} color="secondary.text">
         {t("editProject")}
       </Typography>
 
-      {currentRecord && <UpdatedProjectForm currentRecord={currentRecord} />}
+      {currentRecord && <ProjectForm isEditing={true} currentRecord={currentRecord} />}
     </Box>
   );
 }

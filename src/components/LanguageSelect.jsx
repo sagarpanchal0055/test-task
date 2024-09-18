@@ -5,12 +5,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useTranslation } from 'react-i18next';
 
-export default function LanguageSelect() {
+export default function LanguageSelect({ language, setLanguage }) {
   const { i18n } = useTranslation();
-  let localLanguageStored = localStorage.getItem("curLang")
-  const [language, setLanguage] = React.useState(localLanguageStored ? localLanguageStored : 'en');
-
-
+  
   const handleChange = (event) => {
     setLanguage(event.target.value)
     i18n.changeLanguage(event.target.value);

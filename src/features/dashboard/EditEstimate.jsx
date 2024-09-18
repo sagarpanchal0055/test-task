@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import EditEstimateTableForm from "../../components/estimates/EditEstimateTableForm";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import EstimateTableForm from "../../components/estimates/EstimateTableForm";
 
 function EditEstimate() {
   const { t } = useTranslation();
@@ -22,11 +22,11 @@ function EditEstimate() {
 
   return (  
     <Box p={"24px"}>
-      <Typography fontSize={"32px"} fontWeight={700} color="#202224">
-        {t('Edit Estimate')}  {/* Use the translation key */}
+      <Typography fontSize={"32px"} fontWeight={700} color="secondary.text">
+        {t('Edit Estimate')}
       </Typography>
       
-      <EditEstimateTableForm currentRecord={currentRecord} />
+      <EstimateTableForm isEditing={true} currentRecord={currentRecord} />
     </Box>
   );
 }

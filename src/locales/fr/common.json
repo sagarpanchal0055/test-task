@@ -164,7 +164,8 @@
 
 
   "Edit Estimate": "Modifier l'estimation",
-  "Estimate updated successfully": "Estimation mise à jour avec succès"
+  "Estimate updated successfully": "Estimation mise à jour avec succès",
+  "An error occurred while processing the estimate": "Une erreur s'est produite lors du traitement de l'estimation"
 
 
 

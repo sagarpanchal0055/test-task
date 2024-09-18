@@ -15,11 +15,13 @@ import LocalAtmRoundedIcon from "@mui/icons-material/LocalAtmRounded";
 import AvTimerRoundedIcon from "@mui/icons-material/AvTimerRounded";
 import { logout } from "../../store/auth/authSlice";
 import { useTranslation } from "react-i18next";
+import { useThemeContext } from "../../context/ThemeContext";
 
 const Sidebar = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const location = useLocation();
+  const { darkMode } = useThemeContext()
 
   const menuItems = [
     { name: t("Dashboard"), path: "/dashboard", Icon: AvTimerRoundedIcon },
@@ -34,12 +36,13 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
+        bgcolor:"background.paper",
         minWidth: 250,
         height: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        borderRight: "1px solid #E0E0E0",
+        borderRight: `1px solid ${darkMode ? "transparent" : "#E0E0E0"}`,
       }}
     >
       <Box>
@@ -66,7 +69,7 @@ const Sidebar = () => {
               sx={{
                 position: "relative",
                 "&:hover" : {
-                  "background": "lightGrey"
+                  "background": darkMode ? "#483D8B" : "lightGrey"
                 }
               }}
             >
@@ -97,7 +100,7 @@ const Sidebar = () => {
                 <ListItemIcon>
                   <Icon
                     sx={{
-                      color: location.pathname.includes(path) ? "white" : "black",
+                      color: location.pathname.includes(path) ? "white" : "secondary.text",
                     }}
                   />
                 </ListItemIcon>
@@ -105,7 +108,7 @@ const Sidebar = () => {
                   primary={
                     <Typography
                       sx={{
-                        color: location.pathname.includes(path) ? "white" : "black",
+                        color: location.pathname.includes(path) ? "white" : "secondary.text",
                         fontWeight: 600,
                       }}
                     >
@@ -119,7 +122,7 @@ const Sidebar = () => {
         </List>
       </Box>
 
-      <List>
+      <List sx={{ borderTop: `1px solid ${darkMode ? "#E0E0E0" : "transparent"}`, pt: "16px" }}>
         {bottomMenuItems.map(({ path, name, Icon }, index) => (
           <ListItem
             component={NavLink}
@@ -139,14 +142,14 @@ const Sidebar = () => {
           >
             <ListItemIcon>
               <Icon
-                sx={{ color: location.pathname.includes(path) ? "white" : "black" }}
+                sx={{ color: location.pathname.includes(path) ? "white" : "secondary.text" }}
               />
             </ListItemIcon>
             <ListItemText
               primary={
                 <Typography
                   sx={{
-                    color: location.pathname.includes(path) ? "white" : "black",
+                    color: location.pathname.includes(path) ? "white" : "secondary.text",
                     fontWeight: 500,
                   }}
                 >
