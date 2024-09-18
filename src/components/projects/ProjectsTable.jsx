@@ -204,7 +204,7 @@ const ProjectsTable = ({ columnVisibility, projectData = [] }) => {
                 )}
                 <TableCell sx={{ whiteSpace: "nowrap", width: "auto", minWidth: "140px" }} align="center">
                   <Box display={"flex"} gap={1}>
-                    <Edit sx={{ cursor: "pointer" }} onClick={() => navigate(`/edit-project/${row.id}`)} />
+                    <Edit sx={{ cursor: "pointer" }} onClick={() => navigate(`/projects/edit-project/${row.id}`)} />
                     <Save sx={{ cursor: "pointer" }} />
                     <TimelapseRounded sx={{ cursor: "pointer" }} />
                   </Box>

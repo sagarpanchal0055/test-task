@@ -76,10 +76,10 @@ const Sidebar = () => {
                 position={"absolute"}
                 left={0}
                 sx={{
-                  backgroundColor: location.pathname === path ? "#4C8BF5" : "",
-                  borderTopRightRadius: location.pathname === path ? "4px" : "",
+                  backgroundColor: location.pathname.includes(path) ? "#4C8BF5" : "",
+                  borderTopRightRadius: location.pathname.includes(path) ? "4px" : "",
                   borderBottomRightRadius:
-                    location.pathname === path ? "4px" : "",
+                    location.pathname.includes(path) ? "4px" : "",
                 }}
               />
               <Box
@@ -88,8 +88,8 @@ const Sidebar = () => {
                   width: "180px",
                   alignItems: "center",
                   marginLeft: "16px",
-                  backgroundColor: location.pathname === path ? "#4C8BF5" : "",
-                  borderRadius: location.pathname === path ? "4px" : "",
+                  backgroundColor: location.pathname.includes(path) ? "#4C8BF5" : "",
+                  borderRadius: location.pathname.includes(path) ? "4px" : "",
                   p: "16px",
                   pr: "24px",
                 }}
@@ -97,7 +97,7 @@ const Sidebar = () => {
                 <ListItemIcon>
                   <Icon
                     sx={{
-                      color: location.pathname === path ? "white" : "black",
+                      color: location.pathname.includes(path) ? "white" : "black",
                     }}
                   />
                 </ListItemIcon>
@@ -105,7 +105,7 @@ const Sidebar = () => {
                   primary={
                     <Typography
                       sx={{
-                        color: location.pathname === path ? "white" : "black",
+                        color: location.pathname.includes(path) ? "white" : "black",
                         fontWeight: 600,
                       }}
                     >
@@ -131,22 +131,22 @@ const Sidebar = () => {
               }
             }}
             sx={{
-              backgroundColor: location.pathname === path ? "#4C8BF5" : "",
-              borderRadius: location.pathname === path ? "4px" : "",
+              backgroundColor: location.pathname.includes(path) ? "#4C8BF5" : "",
+              borderRadius: location.pathname.includes(path) ? "4px" : "",
               marginBottom: "8px",
               paddingLeft: "16px",
             }}
           >
             <ListItemIcon>
               <Icon
-                sx={{ color: location.pathname === path ? "white" : "black" }}
+                sx={{ color: location.pathname.includes(path) ? "white" : "black" }}
               />
             </ListItemIcon>
             <ListItemText
               primary={
                 <Typography
                   sx={{
-                    color: location.pathname === path ? "white" : "black",
+                    color: location.pathname.includes(path) ? "white" : "black",
                     fontWeight: 500,
                   }}
                 >

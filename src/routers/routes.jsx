@@ -45,11 +45,11 @@ const AppRoutes = () => {
             element={<PrivateRoute element={Projects} />}
           />
           <Route
-            path="/add-project"
+            path="/projects/add-project"
             element={<PrivateRoute element={AddProject} />}
           />
           <Route
-            path="/edit-project/:id"
+            path="/projects/edit-project/:id"
             element={<PrivateRoute element={EditProject} />}
           />
           <Route
@@ -57,11 +57,11 @@ const AppRoutes = () => {
             element={<PrivateRoute element={Estimates} />}
           />
           <Route
-            path="/add-estimate"
+            path="/estimates/add-estimate"
             element={<PrivateRoute element={AddEstimate} />}
           />
           <Route
-            path="/edit-estimate/:id"
+            path="/estimates/edit-estimate/:id"
             element={<PrivateRoute element={EditEstimate} />}
           />
           <Route

@@ -278,7 +278,7 @@ const ProjectsHeader = ({
       </Box>
 
       <Box>
-        <CustomButton onClick={() => navigate("/add-project")}>
+        <CustomButton onClick={() => navigate("/projects/add-project")}>
           {t("Add Project")}
         </CustomButton>
       </Box>

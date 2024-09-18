@@ -193,7 +193,7 @@ const EstimatesTable = ({ estimatesData = [] }) => {
                   <Box display={"flex"} justifyContent={"center"} gap={1}>
                     <Edit
                       sx={{ cursor: "pointer" }}
-                      onClick={() => navigate(`/edit-estimate/${row.id}`)}
+                      onClick={() => navigate(`/estimates/edit-estimate/${row.id}`)}
                     />
                   </Box>
                 </TableCell>

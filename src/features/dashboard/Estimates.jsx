@@ -60,7 +60,7 @@ function Estimates() {
           {t("Estimates")}
         </Typography>
 
-        <CustomButton onClick={() => navigate("/add-estimate")}>
+        <CustomButton onClick={() => navigate("/estimates/add-estimate")}>
           {t("Add Estimate")}
         </CustomButton>
       </Box>
